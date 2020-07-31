@@ -1,30 +1,37 @@
-package prii_u301_agencia;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package agregar_gestionar;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 /**
- * @author Katherine Arzate Serrano
- * @author Carlos Sebastian Madrigal Rodriguez
+ *
+ * @author Katherine Arzate
  */
 public class Conector {
-    public java.sql.Connection miconector = null;
-    String contrasena = "";
+    public Connection miconector = null;
+    String contrasena = "definir";
  
     public Conector() {
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/Agencia";
+            Class.forName("com.mysql.cj.jdbc.Drive").newInstance();
+            String url = "jdbc:mysql://localhost:3307/Agencia";
             miconector = DriverManager.getConnection(url, "root", contrasena);
             if(miconector != null)System.out.println(" Conexión exitosa! ");   
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
         } catch(SQLException ex){
             Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Error al hacer conexion con la base de datos!");
         }
     }    
      
